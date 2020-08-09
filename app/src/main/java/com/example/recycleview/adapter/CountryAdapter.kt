@@ -1,25 +1,24 @@
 package com.example.recycleview.adapter
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycleview.R
-import com.example.recycleview.model.Person
-import kotlinx.android.synthetic.main.item_person.view.*
+import com.example.recycleview.model.Country
+import kotlinx.android.synthetic.main.item_country.view.*
+import kotlinx.android.synthetic.main.item_person.view.imageView
 
-class PersonAdapter(var personList: ArrayList<Person>) :
-    RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
+class CountryAdapter(var countryList: ArrayList<Country>) :
+    RecyclerView.Adapter<CountryAdapter.PersonViewHolder>() {
 
     class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        fun bindPerson(person: Person) {
-            itemView.imageView.setImageResource(person.image)
-            itemView.t1.text = person.name
-            itemView.t2.text = person.name1
-            itemView.t3.text = person.name2
-            itemView.t4.text = person.name3
+        fun bind(country: Country) {
+            itemView.imageView.setImageResource(country.image)
+            itemView.txtCounty.text = country.name
 
 
         }
@@ -28,7 +27,7 @@ class PersonAdapter(var personList: ArrayList<Person>) :
     //choose layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_person,
+            R.layout.item_country,
             parent, false
         )
         return PersonViewHolder(view)
@@ -36,12 +35,12 @@ class PersonAdapter(var personList: ArrayList<Person>) :
 
     //count
     override fun getItemCount(): Int {
-        return personList.size
+        return countryList.size
 
     }
 
     //position
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
-        holder.bindPerson(personList[position])
+        holder.bind(countryList[position])
     }
 }
